@@ -1,0 +1,37 @@
+!!!5
+%html.no-js{:dir => "ltr", :lang => "en", :class => 'dark'}
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "chrome=1", "http-equiv" => "X-UA-Compatible"}
+    %meta(name="viewport" content="width=780")
+    %link{:rel => "shortcut icon", :type => "image/png", :href => image_path("compass_icon.png")}
+    %title= title(yield(:title))
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body.default{:id => controller_name}
+    #wrap
+      %header#banner{:role => "banner"}
+        = form_for :search, :url => extensions_path, :html => {:id => 'search-docs', :method => 'GET'} do |f|
+          %input#search{:name => "q", :type => "text", :value => "", :placeholder => "Search"}
+
+        %nav#main-nav{:role => "navigation"}
+          %ul
+            %li.vcard
+              %a.fn.org.url.uid{:href => "/", :rel => "home"} Home
+            %li
+              %a{:href => "http://compass-style.org", :rel => "documentation"} Reference
+            %li
+              - if user_signed_in?
+                = link_to "Logout", destroy_user_session_path, :method => :delete
+              - else
+                = link_to "Sign in with GitHub", user_omniauth_authorize_path(:github)
+      #page
+        #docs_panel
+          #theme_pref
+            %a{:href => "#", :rel => "theme", :title => "switch theme" } Q
+        %article{:id => action_name }
+          %h1= yield :title
+          = yield
+      %footer(role="contentinfo")
+        = yield :footer

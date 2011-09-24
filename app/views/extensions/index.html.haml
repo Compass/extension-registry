@@ -1,0 +1,9 @@
+- content_for(:title) do
+  = t('extensions.title')
+  
+- unless @extensions.blank?
+  .extensions
+    = render @extensions
+  = paginate @extensions
+- else 
+  .error= t('extensions.no_extensions_found')
