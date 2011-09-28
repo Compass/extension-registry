@@ -2,9 +2,4 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  global:
-    title: "Compass Extension Repository"
-  extensions:
-    new: "Create a new Extension"
-    title: "Extensions"
-    no_extensions_found: "No Extensions found that match your search. Please refine your query and try again"
+  hello: "Hello world"

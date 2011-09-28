@@ -16,7 +16,6 @@ group :assets do
   gem 'compass', :path => '../compass'
   gem 'compass-theme', :path => '../compass-theme' #:git => 'git://github.com/Compass/compass-theme.git'
   gem 'uglifier'
-  gem 'fancy-buttons', '~> 1.1.2'
 end
 
 gem 'jquery-rails', '~> 1.0.14'
@@ -25,20 +24,13 @@ gem 'foreigner', '~> 1.1.1'
 gem 'devise', '~> 1.4.5'
 gem "oa-oauth", :require => "omniauth/oauth"
 gem 'kaminari', '~> 0.12.4'
-gem 'carrierwave', '~> 0.5.7'
-gem 'mini_magick'
 
 group :test, :development do
   gem 'factory_girl_rails', '~> 1.2.0'
   gem 'rspec-rails', '~> 2.6.1'
   gem 'guard', '~> 0.6.3'
-  gem 'rb-fsevent' if RbConfig::CONFIG['host_os'] =~ /darwin/
-  gem 'growl_notify'
-  gem 'compass-growl', :path => '../compass-growl'
   gem 'guard-rspec'
   gem 'mocha'
-  gem 'jasmine-headless-webkit'
-  gem 'guard-jasmine-headless-webkit'
 end
 
 # Use unicorn as the web server

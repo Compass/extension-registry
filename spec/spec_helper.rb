@@ -7,17 +7,6 @@ require 'rspec/rails'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
-module ::RspecHelpers
-  class << self 
-    def included(klass)
-      klass.instance_eval do
-        let(:user) { Factory(:user) }
-        let(:login!) { sign_in :user, user }
-      end
-    end
-  end
-end
-
 RSpec.configure do |config|
   # == Mock Framework
   #
@@ -32,10 +21,4 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
-  
-  config.include ::RspecHelpers
-  
 end
-
-OmniAuth.config.test_mode = true
-OmniAuth.config.add_mock(:github, { :provider => 'github', 'extra' => { 'user_hash' => {'email' => "test@compass-style.org"} } })

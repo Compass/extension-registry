@@ -1,5 +1,4 @@
 @import "compass";
-@import "fancy-buttons";
 @import "compass/layout";
 @import "core/extensions";
 
@@ -25,67 +24,6 @@
 
 @import "core/clearing-classes";
 
-.foo { }
 
-html.dark { 
-  @include dark-theme(true); 
-  .extension a {
-    @extend .inset-panel-dark;
-  }
-}
-html.light { 
-  @include light-theme(true); 
-  .extension a {
-    @extend .inset-panel-light;
-  }
-}
-.extension {
-  @include float-left;
-}
-.extension a {
-  margin: 3px;
-  display:block;
-  padding: {
-    top:6px;
-    bottom:6px;
-  }
-  width: 240px;
-  text-align:center;
-}
-.clearfix {
-  @include clearfix;
-}
-
-.extensions {
-  @extend .clearfix;
-}
-
-form.new_extension {
-  
-  
-  
-  legend {
-    @extend h3;
-    &:before {
-      content: "Step " counter(fieldsets) ": ";
-      counter-increment: fieldsets;
-    }
-  }
-  li {
-    list-style: none;
-    margin-bottom:1.5em;
-  }
-  
-  label {
-    padding-right:10px;
-    width:110px;
-    @include float-left;
-    &:hover {
-      cursor:pointer;
-    }
-  }
-  
-  input[type="submit"] {
-    @include fancy-button;
-  }
-}
+html.dark { @include dark-theme(true); }
+html.light { @include light-theme(true); }

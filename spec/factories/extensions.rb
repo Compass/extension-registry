@@ -5,7 +5,6 @@ FactoryGirl.define do
     sequence :name do |n|
       "My extensions #{n}"
      end
-     image Rails.root.join('spec', 'factories', 'extension_test.png').open
      ruby_gem "compass"
      association :user, :factory => :user
      homepage 'http://compass-style.org'

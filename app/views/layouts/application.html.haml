@@ -4,16 +4,16 @@
     %meta{:charset => "utf-8"}/
     %meta{:content => "chrome=1", "http-equiv" => "X-UA-Compatible"}
     %meta(name="viewport" content="width=780")
-    %link{:rel => "shortcut icon", :type => "image/png", :href => image_path("compass_icon.png")}
-    %title= title(yield(:title))
+    %link(rel="shortcut icon" type="image/png" href="/images/compass_icon.png")
+    %title Compass Extension Repo
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body.default{:id => controller_name}
     #wrap
       %header#banner{:role => "banner"}
-        = form_for :search, :url => extensions_path, :html => {:id => 'search-docs', :method => 'GET'} do |f|
-          %input#search{:name => "q", :type => "text", :value => "", :placeholder => "Search"}
+        %form#search-docs{:action => "/search/", :method => "GET"}
+          %input#search{:name => "q", :type => "text", :value => "", :placeholder => "Search the docs"}
 
         %nav#main-nav{:role => "navigation"}
           %ul
@@ -30,8 +30,6 @@
         #docs_panel
           #theme_pref
             %a{:href => "#", :rel => "theme", :title => "switch theme" } Q
-        %article{:id => action_name }
-          %h1= yield :title
-          = yield
+        %article{:id => action_name }= yield
       %footer(role="contentinfo")
         = yield :footer
