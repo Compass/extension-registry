@@ -44,6 +44,14 @@ describe ExtensionsController do
       response.should be_success
     end
   end
+  
+  
+  describe "GET 'show'" do
+    it "should be successful" do
+      get :show, :id => Factory(:extension).id
+      response.should be_success
+    end
+  end
 
   describe "GET 'edit'" do
     it "should be successful" do
@@ -55,15 +63,57 @@ describe ExtensionsController do
     
   end
   
+  describe "PUT 'update'" do
+    
+    before do
+      @extension = Factory(:extension)
+      @user = @extension.user
+      sign_in @user  
+    end    
+    it "should update the extension" do
+      put :update, :id => @extension.id, :extension => Factory.attributes_for(:extension)
+      response.should redirect_to extension_path(assigns[:extension])
+    end
+    
+    it "should not update extension" do
+      put :update, :id => @extension.id, :extension => {:name => ''}
+      response.should render_template :edit
+    end
+    
+  end
+  
   describe "POST 'create'" do
     before do
       @user = Factory(:user)
       sign_in(@user)
-      post :create, :extension => Factory.attributes_for(:extension)
     end
     
-    it "should be redirect_to #show" do
+    it "should be create a new extension" do
+      count =  Extension.count
+      post :create, :extension => Factory.attributes_for(:extension)
+      assert_equal count + 1, Extension.count
       response.should redirect_to extension_path(assigns[:extension])
+    end
+    
+    it "should not create a new extension and render new" do
+      post :create, :extension => {:name => ''}
+      response.should render_template :new
+    end
+    
+  end
+  
+  describe "DELETE 'destroy'" do
+    before do
+      @extension = Factory(:extension)
+      @user = @extension.user
+      sign_in @user
+    end
+    
+    it "should destroy extension" do
+      count = Extension.count
+      delete :destroy, :id => @extension.id
+      assert_equal count - 1, Extension.count
+      response.should redirect_to root_path
     end
     
   end

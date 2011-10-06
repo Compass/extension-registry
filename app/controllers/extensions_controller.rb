@@ -14,16 +14,19 @@ class ExtensionsController < ApplicationController
     @extension = Extension.new
   end
   
-  def edit
-    
-  end
+  def edit;end
   
   def destroy
-    
+    @extension.destroy
+    redirect_to root_path, :notice => t('extension.destroyed')
   end
   
-  def update
-    
+  def update    
+    if @extension.update_attributes(params[:extension])
+      redirect_to extension_path(@extension), :notice => t('extension.updated')
+    else
+      render :edit
+    end
   end
   
   def create
@@ -35,9 +38,7 @@ class ExtensionsController < ApplicationController
     end
   end
   
-  def show
-    
-  end
+  def show;end
   
   private
   
@@ -46,7 +47,7 @@ class ExtensionsController < ApplicationController
   end
   
   def current_user_owns_extension?
-    unless current_user == @extension.user
+    unless current_user.id == @extension.user_id
       redirect_to root_path, :alert => t('extension.invalid_permissions')
       return false
     end
