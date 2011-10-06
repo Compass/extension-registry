@@ -24,6 +24,8 @@ gem 'foreigner', '~> 1.1.1'
 gem 'devise', '~> 1.4.5'
 gem "oa-oauth", :require => "omniauth/oauth"
 gem 'kaminari', '~> 0.12.4'
+gem "carrierwave", "~> 0.5.7"
+gem "mini_magick", "~> 3.3"
 
 group :test, :development do
   gem 'factory_girl_rails', '~> 1.2.0'
@@ -31,6 +33,8 @@ group :test, :development do
   gem 'guard', '~> 0.6.3'
   gem 'guard-rspec'
   gem 'mocha'
+  gem 'growl_notify'
+  gem 'rb-fsevent'
 end
 
 # Use unicorn as the web server

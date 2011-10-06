@@ -1,0 +1,15 @@
+= form_for @extension do |f|
+  %fieldset
+    %legend= t('extension.form.general_info')
+    %ol
+      %li
+        = f.label :name
+        = f.text_field :name
+      %li
+        = f.label :image
+        = f.file_field :image
+      - %w(homepage source_code documentation mailing_list).each do |col|
+        %li
+          = f.label col
+          = f.text_field col
+    %fieldset= f.submit
