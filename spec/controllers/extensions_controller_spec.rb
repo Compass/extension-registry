@@ -89,8 +89,9 @@ describe ExtensionsController do
     end
     
     it "should be create a new extension" do
-      count =  Extension.count
-      post :create, :extension => Factory.attributes_for(:extension)
+      count   =  Extension.count
+      factory =  Factory.attributes_for(:extension)
+      post :create, :extension => factory.merge(:image => fixture_file_upload(Rails.root.join('spec/factories/extension_test.png'), 'image/png'))
       assert_equal count + 1, Extension.count
       response.should redirect_to extension_path(assigns[:extension])
     end

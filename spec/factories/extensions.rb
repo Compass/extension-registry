@@ -5,6 +5,7 @@ FactoryGirl.define do
     sequence :name do |n|
       "My extensions #{n}"
      end
+     image File.new(File.join(File.expand_path('../', __FILE__), 'extension_test.png'))
      ruby_gem "compass"
      association :user, :factory => :user
      homepage 'http://compass-style.org'
