@@ -7,7 +7,14 @@ class ExtensionsController < ApplicationController
   before_filter :current_user_owns_extension?, :only => [:edit, :update, :destroy]
   
   def index
-    @extensions = Extension.page(params[:page]).per(12)
+    respond_to do |format|
+      format.html do
+        @extensions = Extension.page(params[:page]).per(12)
+      end
+      format.json do
+        render :json => Extension.all
+      end
+    end
   end
 
   def new

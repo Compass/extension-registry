@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110910045100) do
+ActiveRecord::Schema.define(:version => 20111008182057) do
 
   create_table "extensions", :force => true do |t|
     t.string   "name"
@@ -25,6 +25,9 @@ ActiveRecord::Schema.define(:version => 20110910045100) do
     t.string   "mailing_list"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "gem_version_cache"
+    t.datetime "gem_version_last_updated"
+    t.datetime "ruby_gem_cache_last_updted"
   end
 
   create_table "users", :force => true do |t|

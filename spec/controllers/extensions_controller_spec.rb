@@ -26,15 +26,25 @@ describe ExtensionsController do
   describe "GET 'index'" do
     before do
       15.times { Factory(:extension) }
-      get :index
     end
     it "should be successful" do
+      get :index
       response.should be_success
     end
     
     it "should paginate" do
+      get :index
       assigns(:extensions).size.should == 12
     end
+    
+    it "should load json" do
+      accept_json!
+      get :index
+      parser = Yajl::Parser.new
+      data = parser.parse(response.body)
+      data.size.should == 15
+    end
+    
   end
   
   describe "GET 'new'" do
