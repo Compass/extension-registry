@@ -45,6 +45,13 @@ describe ExtensionsController do
       data.size.should == 15
     end
     
+    it "should return only my extensions" do
+      ext = Factory(:extension)
+      sign_in ext.user
+      get :index, :mine => true
+      assigns(:extensions)[0].should == ext
+    end
+    
   end
   
   describe "GET 'new'" do

@@ -21,11 +21,12 @@
               %a.fn.org.url.uid{:href => "/", :rel => "home"} Home
             %li
               %a{:href => "http://compass-style.org", :rel => "documentation"} Reference
-            %li
-              - if user_signed_in?
-                = link_to "Logout", destroy_user_session_path, :method => :delete
-              - else
-                = link_to "Sign in with GitHub", user_omniauth_authorize_path(:github)
+            - if user_signed_in?
+              %li= link_to "New Extension", new_extension_path
+              %li= link_to "My Extensions", extensions_path(:mine => true)
+              %li= link_to "Logout", destroy_user_session_path, :method => :delete
+            - else
+              %li= link_to "Sign in with GitHub", user_omniauth_authorize_path(:github)
       #page
         #docs_panel
           #theme_pref

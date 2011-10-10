@@ -24,6 +24,27 @@
 
 @import "core/clearing-classes";
 
+@import "forms.scss";
+
+@include simple-forms;
 
 html.dark { @include dark-theme(true); }
 html.light { @include light-theme(true); }
+
+
+
+div.extensions {
+  @extend ul#featured_sites;
+  div.extension {
+    @extend li;
+  }
+  padding-left:100px;
+}
+
+html.dark div.extension {
+  @extend .inset-panel-dark;
+}
+
+html.light div.extension {
+  @extend .inset-panel-light;
+}

@@ -1,5 +1,5 @@
 class ExtensionsController < ApplicationController
-  
+  PER_PAGE = 12
   rescue_from ActiveRecord::RecordNotFound, :with => :handel_not_found_error
 
   before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
@@ -9,7 +9,11 @@ class ExtensionsController < ApplicationController
   def index
     respond_to do |format|
       format.html do
-        @extensions = Extension.page(params[:page]).per(12)
+        @extensions = if params[:mine] && current_user
+          current_user.extensions.page(params[:page]).per(PER_PAGE)
+        else
+          Extension.page(params[:page]).per(PER_PAGE)
+        end
       end
       format.json do
         render :json => Extension.all
@@ -37,7 +41,7 @@ class ExtensionsController < ApplicationController
   end
   
   def create
-    @extension = Extension.new(params[:extension].merge(:user => current_user))
+    @extension = current_user.extensions.build(params[:extension])
     if @extension.save
       redirect_to extension_path(@extension), :notice => t('extension.created')
     else

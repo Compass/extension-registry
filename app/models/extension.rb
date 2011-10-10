@@ -1,5 +1,4 @@
 require 'gems'
-require 'yajl'
 class Extension < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   belongs_to :user
@@ -17,7 +16,7 @@ class Extension < ActiveRecord::Base
   end
   
   def update_gem_version_cache
-    return false if self.ruby_gem.blank?
+    return nil if self.ruby_gem.blank?
     if self.gem_version_cache.blank? || expired?(:gem_version_last_updated)
       self.gem_version_cache = get_gem_versions
       self.gem_version_last_updated = Time.now
@@ -35,7 +34,7 @@ class Extension < ActiveRecord::Base
   end
   
   def update_gem_info
-    return false if self.ruby_gem.blank?
+    return nil if self.ruby_gem.blank?
     if self.ruby_gem_cache.blank? || expired?(:ruby_gem_cache_last_updted)
       self.ruby_gem_cache = get_gem_info
       self.ruby_gem_cache_last_updted = Time.now
