@@ -1,18 +1,21 @@
-PATH
-  remote: ../compass
-  specs:
-    compass (0.12.alpha.0.bd204a4)
-      chunky_png (~> 1.2)
-      fssm (>= 0.2.7)
-      sass (~> 3.1)
-
-PATH
-  remote: ../compass-theme
+GIT
+  remote: git://github.com/Compass/compass-theme.git
+  revision: c2bdc6554b871b874f56105d1421730f8027ee2c
   specs:
     compass-theme (0.0.1)
       compass (~> 0.11)
       compass-susy-plugin (>= 0.7.0.pre8)
       css-slideshow (= 0.2.0)
+
+GIT
+  remote: git://github.com/chriseppstein/compass.git
+  revision: ebb2e42acc8a49cd77a712e955cb349fe07f89ee
+  branch: master
+  specs:
+    compass (0.12.alpha.0.ebb2e42)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
 
 GEM
   remote: http://rubygems.org/
@@ -193,6 +196,9 @@ GEM
       sass (>= 3.1.4)
       sprockets (~> 2.0.0)
       tilt (~> 1.3.2)
+    simple_form (1.5.2)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     sprockets (2.0.2)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -239,6 +245,7 @@ DEPENDENCIES
   rb-fsevent
   rspec-rails (~> 2.6.1)
   sass-rails (~> 3.1.0)
+  simple_form
   sqlite3
   timecop
   uglifier

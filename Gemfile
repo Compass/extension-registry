@@ -13,8 +13,8 @@ gem 'sqlite3'
 group :assets do
   gem 'sass-rails', "  ~> 3.1.0"
   gem 'coffee-rails', "~> 3.1.0"
-  gem 'compass', :path => '../compass'
-  gem 'compass-theme', :path => '../compass-theme' #:git => 'git://github.com/Compass/compass-theme.git'
+  gem 'compass', :git => 'git://github.com/chriseppstein/compass.git', :branch => 'master'
+  gem 'compass-theme', :git => 'git://github.com/Compass/compass-theme.git'
   gem 'uglifier'
 end
 
@@ -28,7 +28,7 @@ gem "carrierwave", "~> 0.5.7"
 gem "mini_magick", "~> 3.3"
 gem "gems", "~> 0.5.0"
 gem "yajl-ruby", "~> 1.0.0"
-
+gem "simple_form"
 group :test, :development do
   gem 'factory_girl_rails', '~> 1.2.0'
   gem 'rspec-rails', '~> 2.6.1'
