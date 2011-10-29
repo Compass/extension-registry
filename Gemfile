@@ -14,7 +14,8 @@ group :assets do
   gem 'sass-rails', "  ~> 3.1.0"
   gem 'coffee-rails', "~> 3.1.0"
   gem 'compass', :git => 'git://github.com/chriseppstein/compass.git', :branch => 'master'
-  gem 'compass-theme', :git => 'git://github.com/Compass/compass-theme.git'
+  gem 'compass-theme', :path => '../' #:git => 'git://github.com/Compass/compass-theme.git'
+  gem 'fancy-buttons', :require => 'fancy-buttons'
   gem 'uglifier'
 end
 
