@@ -1,9 +1,10 @@
 require 'gems'
 class Extension < ActiveRecord::Base
+  UNSTABLE_VERSIONS = %w(pre beta alpha)
   mount_uploader :image, ImageUploader
   belongs_to :user
    
-  validates_presence_of :name, :image
+  validates_presence_of :name, :image, :ruby_gem
   
   before_save :update_gem_cache
   
@@ -48,6 +49,19 @@ class Extension < ActiveRecord::Base
   
   def gem_information
     self.ruby_gem_cache
+  end
+
+  def stable_version
+    @stable_version ||= begin
+      self.gem_version_cache.map do |version|
+        number = version['number']
+        number unless UNSTABLE_VERSIONS.any? { |unstable| number.include?(unstable)}
+      end.compact.first
+    end
+  end
+
+  def latest_version
+    @latest_version ||= self.gem_version_cache.first['number']
   end
   
   private

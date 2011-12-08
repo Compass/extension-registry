@@ -35,6 +35,9 @@ div.extensions {
   div.extension {
     @extend li;
   }
+  img {
+    width:none;
+  }
   padding-left:100px;
 }
 
@@ -51,3 +54,5 @@ html.light div.extension {
 .button {
   @include fancy-button;
 }
+
+@import "extensions";

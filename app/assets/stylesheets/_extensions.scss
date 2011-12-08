@@ -1,0 +1,11 @@
+.install {
+  p {
+    padding-bottom:0;
+  }
+    span {
+      @include border-radius(5px);
+      background-color:black;
+      padding:5px;
+      display:inline-block;
+    }
+}

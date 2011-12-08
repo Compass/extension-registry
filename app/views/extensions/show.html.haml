@@ -1,0 +1,20 @@
+%h1= @extension.name
+= image_tag @extension.image.url
+
+.install
+  %p
+    Install:
+    %span="compass extension install '#{@extension.name}'"
+
+%p 
+  Ruby Gems Name:
+  = gem_link @extension.ruby_gem, @extension.ruby_gem
+
+%p Current Versions:
+%ul
+  %li
+    Stable:
+    = gem_link @extension.stable_version, @extension.ruby_gem, @extension.stable_version
+  %li
+    Latest:
+    = gem_link @extension.latest_version, @extension.ruby_gem, @extension.latest_version

@@ -3,7 +3,7 @@ class ExtensionsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, :with => :handel_not_found_error
 
   before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
-  before_filter :get_extension, :only => [:edit, :update, :destroy]
+  before_filter :get_extension, :only => [:edit, :update, :destroy, :show]
   before_filter :current_user_owns_extension?, :only => [:edit, :update, :destroy]
   
   def index

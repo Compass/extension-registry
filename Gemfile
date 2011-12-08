@@ -14,7 +14,7 @@ group :assets do
   gem 'sass-rails', "  ~> 3.1.0"
   gem 'coffee-rails', "~> 3.1.0"
   gem 'compass', :git => 'git://github.com/chriseppstein/compass.git', :branch => 'master'
-  gem 'compass-theme', :path => '../' #:git => 'git://github.com/Compass/compass-theme.git'
+  gem 'compass-theme', :path => '../compass-theme'#:git => 'git://github.com/Compass/compass-theme.git'
   gem 'fancy-buttons', :require => 'fancy-buttons'
   gem 'uglifier'
 end
@@ -33,7 +33,7 @@ gem "simple_form"
 group :test, :development do
   gem 'factory_girl_rails', '~> 1.2.0'
   gem 'rspec-rails', '~> 2.6.1'
-  gem 'guard', '~> 0.6.3'
+  gem 'guard'
   gem 'guard-rspec'
   gem 'mocha'
   gem 'growl_notify'
