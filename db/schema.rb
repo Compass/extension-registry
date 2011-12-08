@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111008182057) do
+ActiveRecord::Schema.define(:version => 20111208043853) do
 
   create_table "extensions", :force => true do |t|
     t.string   "name"
@@ -19,10 +19,6 @@ ActiveRecord::Schema.define(:version => 20111008182057) do
     t.string   "ruby_gem"
     t.text     "ruby_gem_cache"
     t.integer  "user_id"
-    t.string   "homepage"
-    t.string   "source_code"
-    t.string   "documentation"
-    t.string   "mailing_list"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "gem_version_cache"
